@@ -22,10 +22,10 @@
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.store.catalog.ws.rest.config.ApplicationConfig</param-value>
         </init-param>
-        <init-param>
-            <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>org.glassfish.jersey.filter.LoggingFilter;org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
-        </init-param>
+        <!--<init-param>-->
+            <!--<param-name>jersey.config.server.provider.classnames</param-name>-->
+            <!--<param-value>org.glassfish.jersey.filter.LoggingFilter;org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>-->
+        <!--</init-param>-->
 
         <!--<init-param>-->
             <!--<param-name>jersey.config.servlet.filter.staticContentRegex</param-name>-->
@@ -39,7 +39,4 @@
         <servlet-name>SpringApplication</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
 </web-app>

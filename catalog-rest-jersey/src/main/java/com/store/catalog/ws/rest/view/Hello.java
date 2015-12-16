@@ -28,7 +28,7 @@ public class Hello {
     @Produces(MediaType.TEXT_HTML)
     public Response getHello() {
         Date time = new Date();
-        return Response.status(Response.Status.ACCEPTED).entity("<h1>Hello JMaghreb! "+ time +"!</h1>")
+        return Response.status(Response.Status.ACCEPTED).entity("<h1>Hello! "+ time +"!</h1>")
                 .build();
     }
 }

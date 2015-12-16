@@ -15,23 +15,23 @@ import javax.ws.rs.ApplicationPath;
  * Created by ZCadi on 26/10/2015.
  */
 @ApplicationPath("/*")
-public class ApplicationConfig  extends ResourceConfig{
+public class ApplicationConfig  extends ResourceConfig {
 
 
 
     public ApplicationConfig () {
-        register(RequestContextFilter.class);
+//        register(RequestContextFilter.class);
         register(JacksonFeature.class);
         register(Hello.class);
-        //register(CatalogResource.class);
-        //register(CatalogAdminResource.class);
-        //register(ElasticResource.class);
-
-
-        // Enable Tracing support.
-        //property(ServerProperties.TRACING, "ALL");
-
-        register(CustomExceptionMapper.class);
+        register(CatalogResource.class);
+//        register(CatalogAdminResource.class);
+//        //register(ElasticResource.class);
+//
+//
+//        // Enable Tracing support.
+//        //property(ServerProperties.TRACING, "ALL");
+//
+//        register(CustomExceptionMapper.class);
     }
 
 }
