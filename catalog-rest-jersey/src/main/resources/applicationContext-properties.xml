@@ -18,15 +18,15 @@
     <!-- for visibility in spring files configuration i.e. environment for datasources
     <context:property-placeholder location="file:${properties.location}" />
     -->
-    <context:property-placeholder location="classpath:configuration.properties,classpath:jdbc-hsqlb.properties" />
+    <context:property-placeholder location="classpath:jdbc-hsqlb.properties" />
 
     <!-- for visibility with @Value tag -->
     <bean id="appProperties"
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath:configuration.properties</value>
-                <value>classpath:configuration-nosql.properties</value>
+                <!--<value>classpath:configuration.properties</value>-->
+                <!--<value>classpath:configuration-nosql.properties</value>-->
                 <value>classpath:jdbc-postgresql.properties</value>
                 <!-- <value>file:///${properties.location}</value> -->
             </list>

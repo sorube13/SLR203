@@ -11,16 +11,16 @@
 	<url>http://maven.apache.org</url>
 
 	<scm>
-		<connection>scm:git:https://bitbucket.org/zouheircadi/catalog.git</connection>
-		<developerConnection>scm:git:https://bitbucket.org/zouheircadi/catalog.git</developerConnection>
-		<url>scm:git:https://bitbucket.org/zouheircadi/catalog.git</url>
+		<connection>scm:git:https://github.com/zouheircadi/catalog.git</connection>
+		<developerConnection>scm:git:https://github.com/zouheircadi/catalog.git</developerConnection>
+		<url>scm:git:https://github.com/zouheircadi/catalog.git</url>
 	</scm>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<webapp.directory>/Users/zouheir/Documents/devhome/servers/tomcat/6.0.37/webapps</webapp.directory>
+		<!--<webapp.directory>/Users/zouheir/Documents/devhome/&servers/tomcat/6.0.37/webapps</webapp.directory>-->
 
 		<!-- spring 3.2.11.RELEASE -->
 		<spring.version>4.1.0.RELEASE</spring.version>
