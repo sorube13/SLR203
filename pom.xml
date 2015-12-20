@@ -718,6 +718,7 @@
 				<module>./catalog-rdbms</module>
                 <module>./catalog-rest-jersey</module>
 				<module>./catalog-resource</module>
+				<module>./catalog-servlet-sample</module>
                 <!--
                 <module>./catalog-nosql</module>
                 -->
