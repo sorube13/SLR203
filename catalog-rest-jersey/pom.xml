@@ -106,7 +106,8 @@
     </dependencies>
 
 
-    <!--<build>-->
+    <build>
+        <finalName>catalog</finalName>
         <!--<plugins>-->
             <!--&lt;!&ndash; write maven project properties in order to use it for devops stuff display project version to the user &ndash;&gt;-->
             <!--<plugin>-->
@@ -126,7 +127,7 @@
                 <!--</executions>-->
             <!--</plugin>-->
         <!--</plugins>-->
-    <!--</build>-->
+    </build>
 
 
 
