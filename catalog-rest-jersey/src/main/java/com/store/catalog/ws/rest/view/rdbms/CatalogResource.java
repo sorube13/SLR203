@@ -35,138 +35,105 @@ public class CatalogResource {
 
     public Response getCategories() throws Exception {
 
-        List<CategoryDTO> categories = catalogServiceImpl.findCategories();
-
-        return Response.status(200).entity(categories).build();
+        return null;
     }
 
 
     public Response getCategory(@PathParam("id") Long id) throws Exception {
 
-        CategoryDTO categoryDTO = catalogServiceImpl.findCategory(id);
-
-        return Response.status(200).entity(categoryDTO).build();
+    	return null;
     }
 
 
     public Response createCategory(CategoryDTO categoryDTO) throws Exception {
 
-        CategoryDTO createdCategoryDTO =  catalogServiceImpl.createCategory(categoryDTO);
-
-        return Response.status(201).entity(createdCategoryDTO).build();
+    	return null;
 
     }
 
 
     public Response updateCategory(CategoryDTO categoryDTO) throws Exception {
 
-        catalogServiceImpl.updateCategory(categoryDTO);
-
-        return Response.status(201).build();
+    	return null;
 
     }
 
 
     public Response deleteCategory(@PathParam("id") Long id) throws Exception {
 
-        catalogServiceImpl.deleteCategory(id);
-
-        return Response.status(204).build();
+    	return null;
 
     }
 
 
     public Response getProducts() throws Exception {
 
-        List<ProductDTO> products = catalogServiceImpl.findProducts();
-
-        return Response.status(200).entity(products).build();
+    	return null;
     }
 
 
     public Response getProduct(@PathParam("id") Long id) throws Exception {
 
-        ProductDTO productDTO = catalogServiceImpl.findProduct(id);
-
-        return Response.status(200).entity(productDTO).build();
+    	return null;
     }
 
 
     public Response createProduct(ProductDTO productDTO) throws Exception {
 
-        ProductDTO createdProductDTO =  catalogServiceImpl.createProduct(productDTO);
-
-        return Response.status(201).entity(createdProductDTO).build();
-
+    	return null;
     }
 
 
     public Response updateProduct(ProductDTO productDTO) throws Exception {
 
-        catalogServiceImpl.updateProduct(productDTO);
-
-        return Response.status(201).build();
+    	return null;
 
     }
 
 
     public Response deleteProduct(@PathParam("id") Long id) throws Exception {
 
-        catalogServiceImpl.deleteProduct(id);
-
-        return Response.status(204).build();
+    	return null;
 
     }
 
 
     public Response getItems() throws Exception {
 
-        List<ItemDTO> items = catalogServiceImpl.findItems();
-
-        return Response.status(200).entity(items).build();
+    	return null;
     }
 
 
     public Response getItem(@PathParam("id") Long id) throws Exception {
 
-        ItemDTO itemDTO = catalogServiceImpl.findItem(id);
-
-        return Response.status(200).entity(itemDTO).build();
+    	return null;
     }
 
 
     public Response createItem(ItemDTO itemDTO) throws Exception {
 
-        ItemDTO createdItemDTO =  catalogServiceImpl.createItem(itemDTO);
-
-        return Response.status(201).entity(createdItemDTO).build();
+    	return null;
 
     }
 
 
     public Response updateItem(ItemDTO itemDTO) throws Exception {
 
-        catalogServiceImpl.updateItem(itemDTO);
-
-        return Response.status(201).build();
+    	return null;
 
     }
 
 
     public Response deleteItem(@PathParam("id") Long id) throws Exception {
 
-        catalogServiceImpl.deleteItem(id);
-
-        return Response.status(204).build();
+    	return null;
 
     }
 
 
     public Response getItemsByName(@PathParam("name") String name) throws Exception {
 
-        List<ItemDTO>  items = catalogServiceImpl.searchItems(name);
-
-        return Response.status(200).entity(items).build();
+    	return null;
     }
 
 }
