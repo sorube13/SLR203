@@ -22,15 +22,13 @@ public class CatalogServiceImpl implements CatalogService {
 	Logger logger = LoggerFactory.getLogger(CatalogServiceImpl.class.getName());
 
 
-	@Qualifier("categoryDao")
+
 	private CategoryDao categoryDao ;
 	
 
-	@Qualifier("productDao")
 	protected ProductDao productDao ;
 	
 
-	@Qualifier("itemDao")
 	private ItemDao itemDao ;
 	
 
