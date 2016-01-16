@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class CategoryDaoTest  extends AbstractBaseDaoTestCase{
@@ -66,6 +68,7 @@ public class CategoryDaoTest  extends AbstractBaseDaoTestCase{
      */   
 	private void  loadCategory() {
 		category = new Category();
+        category.setId(new Random().nextLong());
 		category.setName(ConstantUtils.CATEGOY_NAME);
 		category.setDescription(ConstantUtils.CATEGORY_DESCRIPTION);
 	}

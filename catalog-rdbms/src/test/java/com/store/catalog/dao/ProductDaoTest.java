@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -83,6 +84,7 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Category getCategory() {
 		Category category = new Category();
+        category.setId(new Random().nextLong());
         category.setName(CATEGOY_NAME);
         category.setDescription(CATEGORY_DESCRIPTION);
 
@@ -92,6 +94,7 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Category getCategory2() {
 		Category category = new Category();
+        category.setId(new Random().nextLong());
         category.setName("catName2");
         category.setDescription("description2");
 
@@ -106,6 +109,7 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
      */	
 	private void loadProduct() {
     	product = new Product();
+        product.setId(new Random().nextLong());
     	product.setName(PRODUCT_NAME);
     	product.setDescription(PRODUCT_DESCRIPTION);
     	product.setCategory(getCategory());
