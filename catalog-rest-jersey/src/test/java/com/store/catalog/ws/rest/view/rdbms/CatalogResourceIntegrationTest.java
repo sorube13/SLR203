@@ -30,23 +30,23 @@ public class CatalogResourceIntegrationTest {
     @BeforeClass
     static public void setup() {
         Client client = ClientBuilder.newClient();
-//        target = client.target("http://localhost:8080/catalog-rest-jersey");
-        target = client.target("http://localhost:8080/catalog");
+//        target = client.target("http://localhost:8080/catalog-rest-jersey/catalog");
+        target = client.target("http://localhost:8080/catalog/catalog");
     }
 
     /*
-    curl -i http://localhost:8080/catalog/category -H "Content-Type: application/json" -X POST -d '
+    curl -i http://localhost:8080/catalog/catalog/category -H "Content-Type: application/json" -X POST -d '
 {"id":20,"name":"Dinosorus","description":"prehistoric animals",
 	"products":null}'
 
 
-curl -i http://localhost:8080/catalog/category/20 -H "Content-Type: application/json" -X GET
+curl -i http://localhost:8080/catalog/catalog/category/20 -H "Content-Type: application/json" -X GET
 
-curl -i http://localhost:8080/catalog/category -H "Content-Type: application/json" -X PUT -d '{"id":20,"name":"Dinosorus","description":"prehistoric animals updated",
+curl -i http://localhost:8080/catalog/catalog/category -H "Content-Type: application/json" -X PUT -d '{"id":20,"name":"Dinosorus","description":"prehistoric animals updated",
 	"products":null}'
 
 
-curl -i http://localhost:8080/catalog/category/20 -H "Content-Type: application/json" -X DELETE
+curl -i http://localhost:8080/catalog/catalog/category/20 -H "Content-Type: application/json" -X DELETE
 
 
      */
