@@ -25,11 +25,6 @@
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
         
-		<!--<dependency>-->
-			<!--<groupId>org.glassfish.jersey.media</groupId>-->
-			<!--<artifactId>jersey-media-multipart</artifactId>-->
-		<!--</dependency>-->
-
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
@@ -39,26 +34,6 @@
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.core</groupId>-->
-            <!--<artifactId>jersey-server</artifactId>-->
-            <!--<type>jar</type>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
-
-
-        <!--<dependency>-->
-          <!--<groupId>commons-logging</groupId>-->
-          <!--<artifactId>commons-logging</artifactId>-->
-          <!--<version>1.1</version>-->
-          <!--<exclusions>-->
-            <!--<exclusion>-->
-              <!--<groupId>javax.servlet</groupId>-->
-              <!--<artifactId>servlet-api</artifactId>-->
-            <!--</exclusion>-->
-          <!--</exclusions>-->
-        <!--</dependency>-->
 
         <dependency>
           <groupId>org.glassfish.jersey.ext</groupId>
@@ -108,25 +83,39 @@
 
     <build>
         <finalName>catalog</finalName>
-        <!--<plugins>-->
-            <!--&lt;!&ndash; write maven project properties in order to use it for devops stuff display project version to the user &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>properties-maven-plugin</artifactId>-->
-                <!--<version>1.0-alpha-2</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>generate-test-resources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>write-project-properties</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<outputFile>${project.build.outputDirectory}/mavenproject.properties</outputFile>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IntegrationTest*</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ajouter plugin tomcat-maven -->
+        </plugins>
     </build>
 
 
