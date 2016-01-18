@@ -24,11 +24,11 @@ public  class Product implements AbstractBean {
     // =             Attributes             =
     // ======================================
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO,
-    				 generator = "product_seq_generator")
-    @SequenceGenerator(name = "product_seq_generator",
-    				   initialValue = 1, allocationSize = 1,
-    				   sequenceName = "product_seq")
+//    @GeneratedValue( strategy = GenerationType.AUTO,
+//    				 generator = "product_seq_generator")
+//    @SequenceGenerator(name = "product_seq_generator",
+//    				   initialValue = 1, allocationSize = 1,
+//    				   sequenceName = "product_seq")
     @Column(name="id")
 	private Long id;
 

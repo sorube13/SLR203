@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -183,6 +184,7 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
      */	
 	private void loadProduct() {
     	product = new Product();
+    	product.setId(new Random().nextLong());
     	product.setName(PRODUCT_NAME);
     	product.setDescription(PRODUCT_DESCRIPTION);
     	product.setCategory(getCategory());

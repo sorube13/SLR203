@@ -13,6 +13,8 @@ import static com.store.catalog.utils.ConstantUtils.*;
 
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.elasticsearch.common.recycler.Recycler.C;
 
 public class ItemDaoTest extends AbstractBaseDaoTestCase {
@@ -152,6 +154,7 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
      */    
 	private void loadItem() {
 	   	item = new Item();
+	   	item.setId(new Random().nextLong());
         item.setName(ITEM_NAME);
         item.setImagePath(ITEM_IMAGE_PATH);
         item.setUnitCost(ITEM_PRICE);
