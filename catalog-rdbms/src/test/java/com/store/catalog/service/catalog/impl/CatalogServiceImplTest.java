@@ -26,16 +26,16 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CatalogServiceImplTest {
 
-
+	@Mock
 	private CategoryDao categoryDaoMock;	
 	
-
+	@Mock
 	private ProductDao productDaoMock;	
 	
-
+	@Mock
 	private ItemDao itemDaoMock;
 
-
+	@Mock
     protected Mapper mockedMapper;
 
 	private CatalogServiceImpl catalogService;
@@ -45,11 +45,15 @@ public class CatalogServiceImplTest {
 	public void setUp() throws Exception {
 		
 		//init implementation CatalogServiceImpl
-
+		catalogService = new CatalogServiceImpl();
+		
 		//set dependencies for Daos
-
+		catalogService.setCategoryDao(categoryDaoMock);
+		catalogService.setProductDao(productDaoMock);
+		catalogService.setItemDao(itemDaoMock);
+		
 		//set dependency for dozer mapper
-
+		catalogService.setDozerMapper(mockedMapper);
 		
 	}
 
@@ -159,30 +163,93 @@ public class CatalogServiceImplTest {
 	/* ---------------------------------- */
 	@Test 
 	public void saveProductTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Product product = getProduct();
+		ProductDTO productDTO = getProductDto();
+       
+		when(productDaoMock.save(product)).thenReturn(product);
+		when(mockedMapper.map(product, ProductDTO.class)).thenReturn(productDTO);
+        when(mockedMapper.map(productDTO, Product.class)).thenReturn(product);
+
+        ProductDTO aProductDto = catalogService.createProduct(productDTO);
+		
+        verify(productDaoMock).save(product);
+
+		assertNotNull(aProductDto);
+		assertEquals(productDTO, aProductDto);
 	}	
 	
 	@Test 
 	public void udapteProductTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Product product = getProduct();
+		ProductDTO productDTO = getProductDto();
+
+        when(productDaoMock.findOne(product.getId())).thenReturn(product);
+        when(mockedMapper.map(productDTO, Product.class)).thenReturn(product);
+
+		catalogService.updateProduct(productDTO);
+		
+		verify(productDaoMock).save(product);
 	}
 	
 	
 	@Test 
 	public void deleteProductTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Long id = Long.valueOf(1);
+
+        doNothing().when(productDaoMock).delete(id);
+
+		catalogService.deleteProduct(id);
+		
+		verify(productDaoMock).delete(id);
 	}
 	
 
 	@Test 
 	public void findProductsTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Product product = getProduct();
+		Product product2 = getProduct2();
+		
+		ProductDTO productDTO = getProductDto();
+		ProductDTO productDTO2 = getProductDto();
+
+        List<Product> returnedLst = new ArrayList<Product>();
+		
+		returnedLst.add(product);
+		returnedLst.add(product2);
+		
+		when(productDaoMock.findAll()).thenReturn(returnedLst);
+        when(mockedMapper.map(product, ProductDTO.class)).thenReturn(productDTO);
+        when(mockedMapper.map(product2, ProductDTO.class)).thenReturn(productDTO2);
+        
+		List<ProductDTO> productsDto = catalogService.findProducts();
+		
+		assertNotNull(productsDto);
+		
+		assertEquals(2, productsDto.size());
+
+        ProductDTO returnedProductDTO1 = productsDto.get(0);
+        ProductDTO returnedProductDTO2 = productsDto.get(1);
+        assertNotNull(returnedProductDTO1);
+        assertNotNull(returnedProductDTO2);
 	}	
 
 	@Test 
 	public void findProductTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Product product = getProduct();
+		ProductDTO productDTO = getProductDto();
+		
+		when(productDaoMock.findOne(product.getId())).thenReturn(product);
+        when(mockedMapper.map(product, ProductDTO.class)).thenReturn(productDTO);
+
+        ProductDTO myProductDto = catalogService.findProduct(product.getId());
+		
+		assertNotNull(myProductDto);
+		
+		assertEquals(Long.valueOf(1L), myProductDto.getId());
+		assertEquals(productDTO, myProductDto);
 	}
+	
+	
 	
 
 	/* ---------------------------------- */
@@ -191,41 +258,159 @@ public class CatalogServiceImplTest {
 	
 	@Test 
 	public void saveItemTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Item item = getItem();
+		ItemDTO itemDTO = getItemDto();
+		
+		when(itemDaoMock.save(item)).thenReturn(item);
+		when(mockedMapper.map(item, ItemDTO.class)).thenReturn(itemDTO);
+        when(mockedMapper.map(itemDTO, Item.class)).thenReturn(item);
+
+        ItemDTO anItemDto = catalogService.createItem(itemDTO);
+        
+        verify(itemDaoMock).save(item);
+
+		assertNotNull(anItemDto);
+		assertEquals(itemDTO, anItemDto);
 	}	
 	
 	@Test 
 	public void updateItemTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Item item = getItem();
+		ItemDTO itemDTO = getItemDto();
+		
+        when(itemDaoMock.findOne(item.getId())).thenReturn(item);
+        when(mockedMapper.map(itemDTO, Item.class)).thenReturn(item);
+
+		catalogService.updateItem(itemDTO);
+		
+		verify(itemDaoMock).save(item);
 	}
 	
 	
 	@Test 
 	public void deleteItemTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Long id = Long.valueOf(1);
+
+        doNothing().when(itemDaoMock).delete(id);
+
+		catalogService.deleteItem(id);
+		
+		verify(itemDaoMock).delete(id);
 	}
 
     @Test
     public void findItemsTest() throws Exception {
-		throw new Exception("not yet implemented");
+    	Item item = getItem();
+    	Item item2 = getItem2();
+    	
+    	ItemDTO itemDTO = getItemDto();
+    	ItemDTO itemDTO2 = getItemDto();
+    	
+        List<Item> returnedLst = new ArrayList<Item>();
+		
+		returnedLst.add(item);
+		returnedLst.add(item2);
+		
+		when(itemDaoMock.findAll()).thenReturn(returnedLst);
+        when(mockedMapper.map(item, ItemDTO.class)).thenReturn(itemDTO);
+        when(mockedMapper.map(item2, ItemDTO.class)).thenReturn(itemDTO2);
+        
+		List<ItemDTO> itemsDto = catalogService.findItems();
+		
+		assertNotNull(itemsDto);
+		
+		assertEquals(2, itemsDto.size());
+		
+		ItemDTO returnedItemDTO1 = itemsDto.get(0);
+		ItemDTO returnedItemDTO2 = itemsDto.get(1);
+		
+        assertNotNull(returnedItemDTO1);
+        assertNotNull(returnedItemDTO2);
     }
 	
 
 	@Test 
 	public void findItemTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Item item = getItem();
+		ItemDTO itemDTO = getItemDto();
+		
+		when(itemDaoMock.findOne(item.getId())).thenReturn(item);
+        when(mockedMapper.map(item, ItemDTO.class)).thenReturn(itemDTO);
+
+        ItemDTO myItemDto = catalogService.findItem(item.getId());
+        
+		assertNotNull(myItemDto);
+		
+		assertEquals(Long.valueOf(1L), myItemDto.getId());
+		assertEquals(itemDTO, myItemDto);
 	}
 
 	
 	@Test 
 	public void findItemsByProductIdTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Item item = getItem();
+    	//Item item2 = getItem2();
+    	
+    	ItemDTO itemDTO = getItemDto();
+    	//ItemDTO itemDTO2 = getItemDto();
+    	
+    	//Product product = item.getProduct();
+    	//Product product2 = item2.getProduct();
+    	
+        List<Item> returnedLst = new ArrayList<Item>();
+		
+		returnedLst.add(item);
+		//returnedLst.add(item2);
+		
+		when(itemDaoMock.findByProductId(item.getProduct().getId())).thenReturn(returnedLst);
+        when(mockedMapper.map(item, ItemDTO.class)).thenReturn(itemDTO);
+        //when(mockedMapper.map(item2, ItemDTO.class)).thenReturn(itemDTO2);
+        
+		List<ItemDTO> itemsDto = catalogService.findItems(item.getProduct().getId());
+		
+		assertNotNull(itemsDto);
+		
+		assertEquals(1, itemsDto.size());
+		
+		ItemDTO returnedItemDTO1 = itemsDto.get(0);
+		//ItemDTO returnedItemDTO2 = itemsDto.get(1);
+		
+        assertNotNull(returnedItemDTO1);
+        //assertNotNull(returnedItemDTO2);
 	}	
 	
 	
 	@Test 
 	public void searchItemsTest() throws Exception {
-		throw new Exception("not yet implemented");
+		Item item = getItem();
+    	//Item item2 = getItem2();
+    	
+    	ItemDTO itemDTO = getItemDto();
+    	//ItemDTO itemDTO2 = getItemDto();
+    	
+    	//Product product = item.getProduct();
+    	//Product product2 = item2.getProduct();
+    	
+        List<Item> returnedLst = new ArrayList<Item>();
+		
+		returnedLst.add(item);
+		//returnedLst.add(item2);
+		
+		when(itemDaoMock.findByNameContaining(item.getName())).thenReturn(returnedLst);
+        when(mockedMapper.map(item, ItemDTO.class)).thenReturn(itemDTO);
+        //when(mockedMapper.map(item2, ItemDTO.class)).thenReturn(itemDTO2);
+        
+		List<ItemDTO> itemsDto = catalogService.searchItems(item.getName());
+		
+		assertNotNull(itemsDto);
+		
+		assertEquals(1, itemsDto.size());
+		
+		ItemDTO returnedItemDTO1 = itemsDto.get(0);
+		//ItemDTO returnedItemDTO2 = itemsDto.get(1);
+		
+        assertNotNull(returnedItemDTO1);
+        //assertNotNull(returnedItemDTO2);
 	}
 	
 	
