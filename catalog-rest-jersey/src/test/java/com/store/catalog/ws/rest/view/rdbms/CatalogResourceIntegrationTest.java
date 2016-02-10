@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 
 
-@Ignore
+//@Ignore
 public class CatalogResourceIntegrationTest {
 
     private ObjectMapper mapper = new ObjectMapper();

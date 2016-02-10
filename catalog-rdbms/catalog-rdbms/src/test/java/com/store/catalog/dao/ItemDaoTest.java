@@ -13,8 +13,6 @@ import static com.store.catalog.utils.ConstantUtils.*;
 
 import static org.junit.Assert.*;
 
-import java.util.Random;
-
 import org.elasticsearch.common.recycler.Recycler.C;
 
 public class ItemDaoTest extends AbstractBaseDaoTestCase {
@@ -138,7 +136,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
         assertTrue(getIterableSize(itemDao.findAll()) == 1);
         
         Item item2 = new Item();
-        item2.setId(new Random().nextLong());
         item2.setName(ConstantUtils.ITEM_NAME + "search");
         item2.setUnitCost(ConstantUtils.ITEM_PRICE+ 2);
         item2.setImagePath(ConstantUtils.ITEM_IMAGE_PATH + "search");
@@ -155,7 +152,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
      */    
 	private void loadItem() {
 	   	item = new Item();
-	   	item.setId(new Random().nextLong());
         item.setName(ITEM_NAME);
         item.setImagePath(ITEM_IMAGE_PATH);
         item.setUnitCost(ITEM_PRICE);
@@ -165,7 +161,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Item getAnotherItem() {
         Item item2 = new Item();
-        item2.setId(new Random().nextLong());
         item2.setName(ITEM_NAME + "2");
         item2.setImagePath(ITEM_IMAGE_PATH + "2");
         item2.setUnitCost(ITEM_PRICE + 10d); 
@@ -177,7 +172,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
     
 	private Product getProduct() {
 	   	Product product = new Product();
-	   	product.setId(new Random().nextLong());
         product.setName(PRODUCT_NAME);
         product.setDescription(PRODUCT_DESCRIPTION);
 
@@ -191,7 +185,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Product getProduct(String name, String desc) {
 	   	Product product = new Product();
-	   	product.setId(new Random().nextLong());
         product.setName(name);
         product.setDescription(desc);
 
@@ -205,7 +198,6 @@ public class ItemDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Category getCategory() {
 		Category category = new Category();
-		category.setId(new Random().nextLong());
         category.setName(CATEGOY_NAME);
         category.setDescription(CATEGORY_DESCRIPTION);
 

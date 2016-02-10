@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
-import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -39,7 +38,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
     public void tearDown(){
     	categoryDao = null;
     	productDao = null;
-    	product = null;
     }
 
     @Test
@@ -98,7 +96,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
         
         Product prod2 = new Product();
         
-        prod2.setId(new Random().nextLong());
         prod2.setName(ConstantUtils.PRODUCT_NAME + "2");
         prod2.setDescription(ConstantUtils.PRODUCT_DESCRIPTION + "2");
         prod2.setCategory(getCategory());
@@ -117,7 +114,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
         
         Product prod2 = new Product();
         
-        prod2.setId(new Random().nextLong());
         prod2.setName(ConstantUtils.PRODUCT_NAME + "2");
         prod2.setDescription(ConstantUtils.PRODUCT_DESCRIPTION + "2");
         prod2.setCategory(product.getCategory());
@@ -126,7 +122,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
         
         Product prod3 = new Product();
         
-        prod3.setId(new Random().nextLong());
         prod3.setName(ConstantUtils.PRODUCT_NAME + "3");
         prod3.setDescription(ConstantUtils.PRODUCT_DESCRIPTION + "3");
         prod3.setCategory(getCategory2());
@@ -145,7 +140,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
         
         Product prod2 = new Product();
         
-        prod2.setId(new Random().nextLong());
         prod2.setName(ConstantUtils.PRODUCT_NAME + "2");
         prod2.setDescription(ConstantUtils.PRODUCT_DESCRIPTION + "2");
         prod2.setCategory(product.getCategory());
@@ -154,7 +148,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
         
         Product prod3 = new Product();
         
-        prod3.setId(new Random().nextLong());
         prod3.setName(ConstantUtils.PRODUCT_NAME + "3");
         prod3.setDescription(ConstantUtils.PRODUCT_DESCRIPTION + "3");
         prod3.setCategory(getCategory2());
@@ -167,7 +160,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Category getCategory() {
 		Category category = new Category();
-		category.setId(new Random().nextLong());
         category.setName(CATEGOY_NAME);
         category.setDescription(CATEGORY_DESCRIPTION);
 
@@ -177,7 +169,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
 	
 	private Category getCategory2() {
 		Category category = new Category();
-		category.setId(new Random().nextLong());
         category.setName("catName2");
         category.setDescription("description2");
 
@@ -192,7 +183,6 @@ public class ProductDaoTest extends AbstractBaseDaoTestCase {
      */	
 	private void loadProduct() {
     	product = new Product();
-    	product.setId(new Random().nextLong());
     	product.setName(PRODUCT_NAME);
     	product.setDescription(PRODUCT_DESCRIPTION);
     	product.setCategory(getCategory());
